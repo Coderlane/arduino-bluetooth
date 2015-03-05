@@ -19,8 +19,7 @@ private:
 public:
   Bluetooth(const char *new_name = "",
             const char *new_pin = "",
-            int new_mode = 0) 
-	{
+            int new_mode = 0) {
     name = new_name;
     pin = new_pin;
     mode = new_mode;
