@@ -18,15 +18,17 @@ private:
 
 public:
   Bluetooth(const char *new_name = "",
-                    const char *new_pin = "", 
-										int new_mode = 0)
+            const char *new_pin = "",
+            int new_mode = 0) 
 	{
-		name = new_name;
-		pin = new_pin;
-		mode = new_mode;
-	}
-	
-	virtual void Setup() = 0;
+    name = new_name;
+    pin = new_pin;
+    mode = new_mode;
+  }
+
+  virtual void Setup() = 0;
+  virtual void Send(char *data, int len) = 0;
+  virtual void Recv(char *data, int len) = 0;
 };
 
 
