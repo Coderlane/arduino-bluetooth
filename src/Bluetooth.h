@@ -9,17 +9,19 @@
 #ifndef ARDUINO_BLUETOOTH_H
 #define ARDUINO_BLUETOOTH_H
 
+#define NULL (void *)0
+
 class Bluetooth
 {
-private:
+protected:
   const char *name;
   const char *pin;
   int mode;
 
 public:
-  Bluetooth(const char *new_name = "",
-            const char *new_pin = "",
-            int new_mode = 0) {
+  Bluetooth(int new_mode = 0,
+            const char *new_name = NULL,
+            const char *new_pin = NULL) {
     name = new_name;
     pin = new_pin;
     mode = new_mode;
@@ -29,6 +31,5 @@ public:
   virtual void Send(char *data, int len) = 0;
   virtual void Recv(char *data, int len) = 0;
 };
-
 
 #endif /* ARDUINO_BLUETOOTH_H */

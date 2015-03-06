@@ -11,17 +11,20 @@
 
 #include "Bluetooth.h"
 
+
+
 class BluetoothRN42 : public Bluetooth
 {
 
-  BluetoothRN42(const char *new_name = "",
-                const char *new_pin = "",
-                int new_mode = 0) :
-    Bluetooth(new_name, new_pin, new_mode) {}
+public:
+  BluetoothRN42(int new_mode = 0,
+                const char *new_name = NULL,
+                const char *new_pin = NULL) :
+    Bluetooth(new_mode, new_name, new_pin) {}
 
   void Setup();
-  void Send(char *data, int len) = 0;
-  void Recv(char *data, int len) = 0;
+  void Send(char *data, int len);
+  void Recv(char *data, int len);
 };
 
 #endif
