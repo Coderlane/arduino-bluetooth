@@ -1,1 +1,8 @@
 Bluetooth KEYWORD1
+BluetoothRN42 KEYWORD1
+
+setup KEYWORD2
+isConnected KEYWORD2
+getPin KEYWORD2
+getName KEYWORD2
+getMode KEYWORD2

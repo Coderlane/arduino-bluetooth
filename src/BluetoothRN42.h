@@ -13,15 +13,31 @@
 
 class BluetoothRN42 : public Bluetooth
 {
+private:
+	int status_pin;
+  bool inCommand = false;
+
+  void enterCommand();
+  void exitCommand();
 
 public:
   BluetoothRN42(int new_rx_pin, int new_tx_pin,
-                int new_mode = 0,
+                int new_status_pin, int new_mode = 0,
                 const char *new_name = NULL,
                 const char *new_pin = NULL) :
-    Bluetooth(new_rx_pin, new_tx_pin, new_mode, new_name, new_pin) {}
+    Bluetooth(new_rx_pin, new_tx_pin, new_mode, new_name, new_pin) {
+    status_pin = new_status_pin;
 
-  void Setup();
+  }
+
+  int setMode(int new_mode);
+  int setPin(const char *new_pin);
+  int setName(const char *new_name);
+  int setCod(const char *new_cod);
+
+  bool isConnected();
+
+  void setup();
 };
 #endif
 
