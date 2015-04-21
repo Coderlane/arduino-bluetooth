@@ -11,18 +11,18 @@
 
 void BluetoothRN42::setup()
 {
-  this->begin(115200);
+  io->begin(115200);
 
   enterCommand();
 
-	setMode(mode);
-	setPin(pin);
-	setName(name);
-	setCod(cod);
+  setMode(mode);
+  setPin(pin);
+  setName(name);
+  setCod(cod);
 
-	pinMode(status_pin, INPUT);
+  pinMode(status_pin, INPUT);
 
-	exitCommand();
+  exitCommand();
 }
 
 void BluetoothRN42::enterCommand()
@@ -32,7 +32,7 @@ void BluetoothRN42::enterCommand()
   }
 
   // Start by printing w/o CR.
-  this->print("$$$");
+  io->print("$$$");
 
   // Wait for chip
   delay(100);
@@ -48,7 +48,7 @@ void BluetoothRN42::exitCommand()
 
   inCommand = false;
 
-  this->println("---");
+  io->println("---");
 }
 
 int BluetoothRN42::setMode(int new_mode)
@@ -58,8 +58,8 @@ int BluetoothRN42::setMode(int new_mode)
   }
 
   // Set the mode
-  this->print("SM,");
-  this->println(new_mode);
+  io->print("SM,");
+  io->println(new_mode);
 
   return Bluetooth::setMode(new_mode);
 }
@@ -70,8 +70,8 @@ int BluetoothRN42::setPin(const char *new_pin)
     return -1;
   }
 
-  this->print("SP,");
-  this->println(new_pin);
+  io->print("SP,");
+  io->println(new_pin);
 
   return Bluetooth::setPin(new_pin);
 }
@@ -82,8 +82,8 @@ int BluetoothRN42::setName(const char *new_name)
     return -1;
   }
 
-  this->print("SN,");
-  this->println(new_name);
+  io->print("SN,");
+  io->println(new_name);
 
   return Bluetooth::setName(new_name);
 }
@@ -95,23 +95,23 @@ int BluetoothRN42::setCod(const char *new_cod)
   }
 
   // Print the first two characters.
-  this->print("SC,00");
-  this->print(new_cod[5]);
-  this->println(new_cod[4]);
+  io->print("SC,00");
+  io->print(new_cod[5]);
+  io->println(new_cod[4]);
 
   // Print the last four characters.
-  this->print("SD,");
-  this->print(new_cod[3]);
-  this->print(new_cod[2]);
-  this->print(new_cod[1]);
-  this->println(new_cod[0]);
+  io->print("SD,");
+  io->print(new_cod[3]);
+  io->print(new_cod[2]);
+  io->print(new_cod[1]);
+  io->println(new_cod[0]);
 
   return Bluetooth::setCod(new_cod);
 }
 
 bool BluetoothRN42::isConnected()
 {
-	return digitalRead(status_pin) == HIGH;
+  return digitalRead(status_pin) == HIGH;
 
 // Old way of doing is connected.
 #if 0
@@ -120,17 +120,17 @@ bool BluetoothRN42::isConnected()
     return -1;
   }
 
-  this->println("GC");
+  io->println("GC");
 
-  this->readBytes(status, sizeof(status));
+  io->readBytes(status, sizeof(status));
   status[5] = '\0';
 
   if(strcmp(status, "1,0,0") == 0) {
-		// Connection is up.
+    // Connection is up.
     return 1;
   }
 
-	// Connection is down.
+  // Connection is down.
   return 0;
 #endif
 }
