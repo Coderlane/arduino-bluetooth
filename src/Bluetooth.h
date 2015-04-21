@@ -6,8 +6,8 @@
  * @date 2015-03-04
  */
 
-#ifndef ARDUINO_BLUETOOTH_H
-#define ARDUINO_BLUETOOTH_H
+#ifndef BLUETOOTH_H
+#define BLUETOOTH_H
 
 #include <Stream.h>
 #include <SoftwareSerial.h>
@@ -49,44 +49,6 @@ public:
 
   virtual size_t write(uint8_t data) {
     stream->write(data);
-  }
-};
-
-class HardwareBluetoothIO : public BluetoothIO
-{
-private:
-  HardwareSerial *serial;
-
-public:
-  HardwareBluetoothIO() {
-    serial = NULL;
-  }
-
-  virtual void initSerial(HardwareSerial &new_serial) {
-    serial = &new_serial;
-    BluetoothIO::initSerial((Stream &)new_serial);
-  }
-
-  virtual void begin(unsigned long baud) {
-    serial->begin(baud);
-  }
-};
-
-class SoftwareBluetoothIO : public BluetoothIO
-{
-  SoftwareSerial *serial;
-public:
-  SoftwareBluetoothIO() {
-    serial = NULL;
-  }
-
-  virtual void initSerial(SoftwareSerial &new_serial) {
-    serial = &new_serial;
-    BluetoothIO::initSerial((Stream &)new_serial);
-  }
-
-  virtual void begin(unsigned long baud) {
-    serial->begin(baud);
   }
 };
 
@@ -172,4 +134,4 @@ public:
   }
 };
 
-#endif /* ARDUINO_BLUETOOTH_H */
+#endif /* BLUETOOTH_H */

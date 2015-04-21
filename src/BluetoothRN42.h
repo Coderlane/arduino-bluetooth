@@ -6,8 +6,8 @@
  * @date 2015-03-04
  */
 
-#ifndef ARDUINO_BLUETOOTHRN42_H
-#define ARDUINO_BLUETOOTHRN42_H
+#ifndef BLUETOOTHRN42_H
+#define BLUETOOTHRN42_H
 
 #include "Bluetooth.h"
 
@@ -38,35 +38,4 @@ public:
   virtual void setup();
 };
 
-class HardwareBluetoothRN42 : public BluetoothRN42
-{
-  HardwareBluetoothIO hwIO;
-
-public:
-  HardwareBluetoothRN42(HardwareSerial &new_serial,
-                        int new_status_pin, int new_mode = 0,
-                        const char *new_name = NULL,
-                        const char *new_pin = NULL) :
-    BluetoothRN42(new_status_pin, new_mode, new_name, new_pin) {
-    hwIO.initSerial(new_serial);
-    initIO(hwIO);
-  }
-};
-
-class SoftwareBluetoothRN42 : BluetoothRN42
-{
-private:
-  SoftwareBluetoothIO swIO;
-
-public:
-  SoftwareBluetoothRN42(SoftwareSerial &new_serial,
-                        int new_status_pin, int new_mode = 0,
-                        const char *new_name = NULL,
-                        const char *new_pin = NULL) :
-    BluetoothRN42(new_status_pin, new_mode, new_name, new_pin) {
-    swIO.initSerial(new_serial);
-    initIO(swIO);
-  }
-};
-
-#endif /* ARDUINO_BLUETOOTHRN42_H */
+#endif /* BLUETOOTHRN42_H */

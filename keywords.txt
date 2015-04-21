@@ -1,5 +1,7 @@
-Bluetooth KEYWORD1
-BluetoothRN42 KEYWORD1
+HardwareBluetooth KEYWORD1
+SoftwareBluetooth KEYWORD1
+HardwareBluetoothRN42 KEYWORD1
+SoftwareBluetoothRN42 KEYWORD1
 
 setup KEYWORD2
 isConnected KEYWORD2
