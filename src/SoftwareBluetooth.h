@@ -3,6 +3,7 @@
 #define SOFTWARE_BLUETOOTH_H
 
 #include "Bluetooth.h"
+#include <SoftwareSerial.h>
 
 class SoftwareBluetoothIO : public BluetoothIO
 {

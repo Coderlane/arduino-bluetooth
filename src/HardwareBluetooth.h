@@ -4,6 +4,7 @@
 #define HARDWARE_BLUETOOTH_H
 
 #include "Bluetooth.h"
+#include <HardwareSerial.h>
 
 class HardwareBluetoothIO : public BluetoothIO
 {

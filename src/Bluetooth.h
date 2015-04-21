@@ -10,8 +10,6 @@
 #define BLUETOOTH_H
 
 #include <Stream.h>
-#include <SoftwareSerial.h>
-#include <HardwareSerial.h>
 
 #define NULL 0
 
