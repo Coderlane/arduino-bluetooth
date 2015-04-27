@@ -128,7 +128,7 @@ public:
   }
 
   virtual size_t write(uint8_t data) {
-    io->write(data);
+    return io->write(data);
   }
 };
 

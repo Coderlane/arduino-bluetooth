@@ -11,14 +11,19 @@
 
 void BluetoothRN42::setup()
 {
-  io->begin(115200);
-
+  io->begin(115500);
+  delay(500);
+  
   enterCommand();
-
-  setMode(mode);
-  setPin(pin);
+  io->println("U,9600,N");
+  ////io->println("SU,96");
+  delay(500);
+  io->begin(9600);
+  
+  //setMode(mode);
+  //setPin(pin);
   setName(name);
-  setCod(cod);
+  //setCod(cod);
 
   pinMode(status_pin, INPUT);
 
@@ -49,6 +54,7 @@ void BluetoothRN42::exitCommand()
   inCommand = false;
 
   io->println("---");
+  delay(50);
 }
 
 int BluetoothRN42::setMode(int new_mode)
@@ -60,7 +66,7 @@ int BluetoothRN42::setMode(int new_mode)
   // Set the mode
   io->print("SM,");
   io->println(new_mode);
-
+  delay(50);
   return Bluetooth::setMode(new_mode);
 }
 
@@ -72,7 +78,7 @@ int BluetoothRN42::setPin(const char *new_pin)
 
   io->print("SP,");
   io->println(new_pin);
-
+  delay(50);
   return Bluetooth::setPin(new_pin);
 }
 
@@ -84,7 +90,7 @@ int BluetoothRN42::setName(const char *new_name)
 
   io->print("SN,");
   io->println(new_name);
-
+  delay(50);
   return Bluetooth::setName(new_name);
 }
 
@@ -98,6 +104,7 @@ int BluetoothRN42::setCod(const char *new_cod)
   io->print("SC,00");
   io->print(new_cod[5]);
   io->println(new_cod[4]);
+  delay(50);
 
   // Print the last four characters.
   io->print("SD,");
@@ -105,32 +112,12 @@ int BluetoothRN42::setCod(const char *new_cod)
   io->print(new_cod[2]);
   io->print(new_cod[1]);
   io->println(new_cod[0]);
-
+  delay(50);
+  
   return Bluetooth::setCod(new_cod);
 }
 
 bool BluetoothRN42::isConnected()
 {
-  return digitalRead(status_pin) == HIGH;
-
-// Old way of doing is connected.
-#if 0
-  char status[6] = "";
-  if(!inCommand) {
-    return -1;
-  }
-
-  io->println("GC");
-
-  io->readBytes(status, sizeof(status));
-  status[5] = '\0';
-
-  if(strcmp(status, "1,0,0") == 0) {
-    // Connection is up.
-    return 1;
-  }
-
-  // Connection is down.
-  return 0;
-#endif
+	return digitalRead(status_pin) == HIGH;
 }
