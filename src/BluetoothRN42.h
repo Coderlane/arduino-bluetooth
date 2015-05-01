@@ -40,8 +40,7 @@ protected:
   int status_pin;
   bool inCommand;
 
-  void enterCommand();
-  void exitCommand();
+
 
 	static const char * const power_level_strs[];
 
@@ -60,6 +59,10 @@ public:
   int setCod(const char *new_cod);
 	
 	// Device Specific
+	
+	void enterCommand();
+	void exitCommand();
+  
 	int setInquryScanWindow(const char *scan_window);
 	int setPageScanWindow(const char *scan_window);
 	int setBonding(bool bonding_enabled);
