@@ -27,14 +27,18 @@ void BluetoothRN42::setup()
 
   enterCommand();
   io->println("U,9600,N");
-  ////io->println("SU,96");
   delay(500);
   io->begin(9600);
 
-  //setMode(mode);
-  //setPin(pin);
-  setName(name);
-  //setCod(cod);
+  // Set Required Options
+  setMode(mode);
+  // Set Optional Options
+  if (pin != NULL)
+    setPin(pin);
+  if (name != NULL)
+    setName(name);
+  if (cod != NULL)
+    setCod(cod);
 
   pinMode(status_pin, INPUT);
 
