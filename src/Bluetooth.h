@@ -55,11 +55,11 @@ class Bluetooth : public Stream
 protected:
   BluetoothIO *io;
 
-  const char *cod;
-  const char *name;
-  const char *pin;
+  const char *cod = NULL;
+  const char *name = NULL;
+  const char *pin = NULL;
 
-  int mode;
+  int mode = 0;
 
   virtual int setMode(int new_mode) {
     mode = new_mode;
