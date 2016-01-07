@@ -4,7 +4,7 @@ HardwareBluetoothRN42 KEYWORD1
 SoftwareBluetoothRN42 KEYWORD1
 
 setup KEYWORD2
-isConnected KEYWORD2
+connected KEYWORD2
 getPin KEYWORD2
 getName KEYWORD2
 getMode KEYWORD2

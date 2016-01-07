@@ -69,7 +69,7 @@ public:
 	int setPower(enum rn42_power_e power_level);
 
 	// Gotta implement
-  virtual bool isConnected();
+  virtual bool connected();
   virtual void setup();
 };
 

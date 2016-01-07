@@ -190,7 +190,7 @@ int BluetoothRN42::setPower(enum rn42_power_e power_level)
 	return 0;
 }
 
-bool BluetoothRN42::isConnected()
+bool BluetoothRN42::connected()
 {
   return digitalRead(status_pin) == HIGH;
 }

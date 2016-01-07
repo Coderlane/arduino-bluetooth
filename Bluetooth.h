@@ -97,7 +97,7 @@ public:
   }
 
   virtual void setup() = 0;
-  virtual bool isConnected() = 0;
+  virtual bool connected() = 0;
 
   const char *getName() {
     return name;
