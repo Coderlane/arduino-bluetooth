@@ -46,7 +46,7 @@ public:
   }
 
   virtual size_t write(uint8_t data) {
-    stream->write(data);
+    return stream->write(data);
   }
 };
 
@@ -129,6 +129,15 @@ public:
 
   virtual size_t write(uint8_t data) {
     return io->write(data);
+  }
+
+  virtual size_t write(uint8_t *data, size_t size)
+  {
+    size_t len = 0;
+    while (size--) {
+     len += write(*data++);
+    }
+    return len;
   }
 };
 
