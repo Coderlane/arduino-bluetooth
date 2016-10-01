@@ -11,7 +11,10 @@
 
 #include <Stream.h>
 
+#ifndef NULL
+/* ... It happens, I swear... */
 #define NULL 0
+#endif
 
 class BluetoothIO : public Stream
 {
