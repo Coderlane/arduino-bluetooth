@@ -2,6 +2,20 @@
   "name": "arduino-bluetooth",
   "keywords": "",
   "description": "Arduino library for some bluetooth modules (RN42)",
+  "authors": [
+    {
+      "name": "Travis Lane",
+      "email": "coderlane@gmail.com",
+      "url": "http://coderlane.com",
+      "maintainer": true
+    }
+  ],
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/coderlane/arduino-bluetooth"
+  },
+  "downloadUrl": "https://github.com/Coderlane/arduino-bluetooth/archive/master.zip",
   "version": "0.1.0",
   "frameworks": "arduino",
   "platforms": "*"
