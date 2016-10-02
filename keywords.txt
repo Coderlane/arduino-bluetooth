@@ -2,6 +2,7 @@ HardwareBluetooth KEYWORD1
 SoftwareBluetooth KEYWORD1
 HardwareBluetoothRN42 KEYWORD1
 SoftwareBluetoothRN42 KEYWORD1
+TestBluetooth KEYWORD1
 
 setup KEYWORD2
 connected KEYWORD2

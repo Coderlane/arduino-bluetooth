@@ -10,9 +10,11 @@ cache:
 env:
   - PLATFORMIO_CI_SRC=examples/ExampleHost
   - PLATFORMIO_CI_SRC=examples/ExampleClient
+  - PLATFORMIO_CI_SRC=tests/BasicTests
 
 install:
   - pip install -U platformio
+  - platformio lib install ArduinoUnit
 
 script:
   - platformio ci --board=sparkfun_fiov3 --lib="."
