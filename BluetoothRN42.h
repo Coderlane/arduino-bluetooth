@@ -31,6 +31,16 @@ enum rn42_power_e {
 	RN42_POWER_N12 = 0
 };
 
+enum rn42_mode_e {
+  RN42_MODE_SLAVE = 0,
+  RN42_MODE_MASTER = 1,
+  RN42_MODE_TRIGGER = 2,
+  RN42_MODE_AC_MASTER = 3,
+  RN42_MODE_AC_DTR = 4,
+  RN42_MODE_AC_ANY = 5,
+  RN42_MODE_PAIR = 6
+};
+
 #define RN42_POWER_MAX RN42_POWER_16
 #define RN42_POWER_MIN RN42_POWER_N12
 
@@ -39,8 +49,6 @@ class BluetoothRN42 : public Bluetooth
 protected:
   int status_pin;
   bool inCommand;
-
-
 
 	static const char * const power_level_strs[];
 
@@ -57,12 +65,12 @@ public:
   int setPin(const char *new_pin);
   int setName(const char *new_name);
   int setCod(const char *new_cod);
-	
+
 	// Device Specific
-	
+
 	void enterCommand();
 	void exitCommand();
-  
+
 	int setInquryScanWindow(const char *scan_window);
 	int setPageScanWindow(const char *scan_window);
 	int setBonding(bool bonding_enabled);
