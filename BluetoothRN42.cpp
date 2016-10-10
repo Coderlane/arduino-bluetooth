@@ -30,6 +30,8 @@ void BluetoothRN42::setup()
   delay(500);
   io->begin(9600);
 
+  enterCommand();
+
   // Set Required Options
   setMode(mode);
   // Set Optional Options
